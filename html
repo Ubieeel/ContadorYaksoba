@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador de Demanda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .contador {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pedidos de Yakisoba</h1>
+        <div id="pedidos">
+            <div>
+                <h3>Carne</h3>
+                <p>Pequeno: <span class="contador" id="carne_pequeno">0</span></p>
+                <p>Grande: <span class="contador" id="carne_grande">0</span></p>
+                <button onclick="adicionar('carne', 'pequeno')">+ Pequeno</button>
+                <button onclick="adicionar('carne', 'grande')">+ Grande</button>
+                <button onclick="remover('carne', 'pequeno')">- Pequeno</button>
+                <button onclick="remover('carne', 'grande')">- Grande</button>
+            </div>
+            <div>
+                <h3>Frango</h3>
+                <p>Pequeno: <span class="contador" id="frango_pequeno">0</span></p>
+                <p>Grande: <span class="contador" id="frango_grande">0</span></p>
+                <button onclick="adicionar('frango', 'pequeno')">+ Pequeno</button>
+                <button onclick="adicionar('frango', 'grande')">+ Grande</button>
+                <button onclick="remover('frango', 'pequeno')">- Pequeno</button>
+                <button onclick="remover('frango', 'grande')">- Grande</button>
+            </div>
+            <div>
+                <h3>Misto</h3>
+                <p>Pequeno: <span class="contador" id="misto_pequeno">0</span></p>
+                <p>Grande: <span class="contador" id="misto_grande">0</span></p>
+                <button onclick="adicionar('misto', 'pequeno')">+ Pequeno</button>
+                <button onclick="adicionar('misto', 'grande')">+ Grande</button>
+                <button onclick="remover('misto', 'pequeno')">- Pequeno</button>
+                <button onclick="remover('misto', 'grande')">- Grande</button>
+            </div>
+            <div>
+                <h3>Vegetariano</h3>
+                <p>Pequeno: <span class="contador" id="vegetariano_pequeno">0</span></p>
+                <p>Grande: <span class="contador" id="vegetariano_grande">0</span></p>
+                <button onclick="adicionar('vegetariano', 'pequeno')">+ Pequeno</button>
+                <button onclick="adicionar('vegetariano', 'grande')">+ Grande</button>
+                <button onclick="remover('vegetariano', 'pequeno')">- Pequeno</button>
+                <button onclick="remover('vegetariano', 'grande')">- Grande</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let contadores = {
+            carne_pequeno: 0, carne_grande: 0,
+            frango_pequeno: 0, frango_grande: 0,
+            misto_pequeno: 0, misto_grande: 0,
+            vegetariano_pequeno: 0, vegetariano_grande: 0
+        };
+
+        function atualizarContador(tipo, tamanho) {
+            document.getElementById(`${tipo}_${tamanho}`).textContent = contadores[`${tipo}_${tamanho}`];
+        }
+
+        function adicionar(tipo, tamanho) {
+            contadores[`${tipo}_${tamanho}`]++;
+            atualizarContador(tipo, tamanho);
+        }
+
+        function remover(tipo, tamanho) {
+            if (contadores[`${tipo}_${tamanho}`] > 0) {
+                contadores[`${tipo}_${tamanho}`]--;
+                atualizarContador(tipo, tamanho);
+            }
+        }
+    </script>
+</body>
+</html>
